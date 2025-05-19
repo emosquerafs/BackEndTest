@@ -1,0 +1,14 @@
+---
+environments:
+  dev:
+    docker:
+      APP: backendtest
+      VERSION: "0.1"
+      registry: ecr
+      url: 199920436475.dkr.ecr.us-east-1.amazonaws.com
+      platforms: linux/amd64,linux/arm64
+      filename: Dockerfile
+      filepath: .
+      arguments:
+        APP: "{{ APP }}"
+        VERSION: "{{ VERSION }}"
