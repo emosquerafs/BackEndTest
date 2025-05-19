@@ -6,7 +6,7 @@ environments:
       VERSION: "0.3"
       registry: ecr
       url: 199920436475.dkr.ecr.us-east-1.amazonaws.com
-      platforms: linux/amd64,linux/arm64
+      platforms: linux/amd64
       filename: Dockerfile  
       filepath: .
       arguments:
