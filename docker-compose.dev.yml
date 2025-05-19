@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./FrontEndTest
+      args:
+        - ENVIRONMENT=development
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    volumes:
+      - ./FrontEndTest:/app
+      - /app/node_modules
+
+  backend:
+    build:
+      context: ./BackEndTest
+      args:
+        - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    networks:
+      - app-network
+    volumes:
+      - ./BackEndTest:/app
+      - /app/node_modules
+    command: npm run start:dev
+
+networks:
+  app-network:
+    driver: bridge
