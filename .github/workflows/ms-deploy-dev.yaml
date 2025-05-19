@@ -31,7 +31,7 @@ jobs:
 
 
   buildAndTestApp:
-    uses: emosquerafs/.github/workflows/buildAndTestApp.yml@master
+    uses: emosquerafs/actions-templates/.github/workflows/buildAndTestApp.yml@master
     with:
       NODE_VERSION: 20.10.0
     secrets:
