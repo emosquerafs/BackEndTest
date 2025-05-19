@@ -16,7 +16,6 @@ services:
       - ./FrontEndTest:/app
       - /app/node_modules
 
-
   backend:
     build:
       context: ./BackEndTest
