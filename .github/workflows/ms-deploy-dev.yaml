@@ -37,7 +37,7 @@ jobs:
       NODE_VERSION: ${{ inputs.NODE_VERSION }}
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      SONAR_HOST_URL: 'http://186.145.138.81:9000'
 
   build-and-push:
     needs: [setup-env, buildAndTestApp]
