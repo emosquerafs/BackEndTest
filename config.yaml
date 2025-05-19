@@ -2,7 +2,7 @@
 environments:
   dev:
     docker:
-      APP: backendtest
+      APP: backend
       VERSION: "0.1"
       registry: ecr
       url: 199920436475.dkr.ecr.us-east-1.amazonaws.com

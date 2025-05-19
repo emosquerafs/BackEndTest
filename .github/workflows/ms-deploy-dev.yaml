@@ -33,13 +33,13 @@ jobs:
   buildAndTestApp:
     uses: emosquerafs/actions-templates/.github/workflows/buildAndTestApp.yml@main
     with:
-      NODE_VERSION: 20.10.0
+      NODE_VERSION: ${{ inputs.NODE_VERSION }}
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
   build-and-push:
-    needs: setup-env
+    needs: [setup-env, buildAndTestApp]
     uses: edelux/cicd-build-push/.github/workflows/build_push.yaml@main
     with:
       ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
@@ -50,7 +50,7 @@ jobs:
 
 
   deploy-update-task:
-    needs: [setup-env, build-and-push]
+    needs: [setup-env, build-and-push,buildAndTestApp]
     uses: edelux/cicd-ecs/.github/workflows/deploy_and_update_tasks.yaml@main
     with:
       ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
